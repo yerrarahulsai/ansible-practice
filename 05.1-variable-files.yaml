@@ -1,0 +1,9 @@
+# If we want to change the variables we need to change in the main file
+# So any accidental changes may happen, that's why
+# We can keep all our varibales here
+
+course: devops
+duration: 20hrs
+trainer: rs
+
+# We can refer these varibales in the main file
