@@ -1,0 +1,10 @@
+- name: variables calling from files
+  hosts: local
+  connection: local
+  vars_file:
+  - 05.1-variable-files.yaml  # Loads the variables from that file
+  # We can refer how many file we want under this
+  tasks:
+  - name: printing the course info
+    ansible.builtin.debug:
+      msg: "Course name is: {{ course }}, Duration: {{ duration }}, Trainer: {{ trainer }}" 
