@@ -1,0 +1,8 @@
+- name: printing hello world
+  hosts:  localhost #To which server we are connecting to, we mention here
+  connection: local  # Ansible is connecting to localhost
+  #List of tasks/collections/modules
+  tasks:
+  - name: hello world #Our wish
+    ansible.builtin.debug:   #debug is module which is equivalent to echo (Prints on the cli)
+      msg: "Hello world"
