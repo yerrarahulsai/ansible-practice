@@ -1,0 +1,17 @@
+- name: task level variables
+  hosts: local
+  connection: local
+  vars:
+    course: devops
+    duration: 20hrs
+    trainer: rs
+  tasks:
+  - name: printing task level varibales
+    vars:
+      course: Ansible
+    ansible.builtin.debug:
+      msg: "Course name is: {{ course }}, Duration: {{ duration }}, Trainer: {{ trainer }}" 
+      # Here we are overriding the varibales
+      # Duration and trainer will be accessed from the play level variables
+      # course will be override by task level course variable value
+      # If same varibale name is available in the play level and task level, then first preference goes to task level
