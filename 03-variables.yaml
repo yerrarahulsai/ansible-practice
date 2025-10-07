@@ -10,4 +10,4 @@
   - name: printing the course info
     ansible.builtin.debug:
       # We represent varibales is {{variable_name}}
-      msg: "Course name is: {{ course }}, Duration: {{ duration }}, Trainer: {{ trainer }}" 
+      msg: "Course name is: {{ course }}, Duration: {{ duration }}, Trainer: {{ trainer }}"
