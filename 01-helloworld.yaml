@@ -1,5 +1,5 @@
 - name: printing hello world
-  hosts:  localhost #To which server we are connecting to, we mention here
+  hosts:  local #To which server we are connecting to, we mention here
   connection: local  # Ansible is connecting to localhost
   #List of tasks/collections/modules
   tasks:
