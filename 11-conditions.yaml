@@ -1,0 +1,15 @@
+- name: conditions
+  hosts: local
+  connection: local
+  vars_prompt:
+  - name: number
+    prompt: Enter number
+    private: false
+  tasks:
+  - name: check number is less than 10 or not
+    ansible.builtin.debug:
+      msg: "Given number {{ number }} is less than 10"
+    when: number < 10  # When this conditon satisfies then only task will be executed
+
+# If conditon is not met then the task will be skipped
+# Wheather to execute that task or not is based on the given condition
