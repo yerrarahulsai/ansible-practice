@@ -1,0 +1,15 @@
+- name: variables from promt
+  hosts: local
+  connection: local
+  vars_prompt:
+  - name: username   # Value given will be stored in username
+    promt: Enter username
+    private: false # When entering value it is visible in cli
+
+  - name: password
+    promt: Enter password
+    private: true # Value will not visible while entering in cli
+  tasks:
+  - name: print credentials
+    ansible.builtin.debug:
+      msg: "Username is {{ username }}, Password is {{ password }}"
