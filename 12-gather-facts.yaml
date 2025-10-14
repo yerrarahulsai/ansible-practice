@@ -1,0 +1,10 @@
+- name: gather facts
+  hosts: local
+  connection: local
+
+  tasks:
+  - name: Printing facts
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
+
+# ansible_facts - keeps all the OS information in that variable
