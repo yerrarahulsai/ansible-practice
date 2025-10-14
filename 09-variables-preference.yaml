@@ -1,0 +1,30 @@
+- name: variable preference
+  hosts: local
+  connection: local
+  vars:
+    NAME: From play level
+
+  vars_file:
+  - 05.1-variable-file.yaml
+
+  vars_prompt:
+  - name: NAME
+    promt: What is your Name?
+    private: false
+  
+  tasks:
+  - name: Testing varibale preference
+    vars:
+      NAME: From task level
+    ansible.builtin.debug:
+      msg: "Name is {{ NAME }}"
+
+# Preferences
+# 1. Command Line arguments
+# 2. Task level
+# 3. From files
+# 4. From prompt
+# 5. Play level
+# 6. From inventory file
+
+# Comment one by one while running to know from which part you are getting the value
