@@ -1,0 +1,12 @@
+- name: variable from inventory file
+  hosts: local
+  connection: local
+  tasks:
+  - name: print course info
+    ansible.builtin.debug:
+      msg: "Course name is: {{ course }}, Duration: {{ duration }}, Trainer: {{ trainer }}"
+
+# Here we have not metioned anywhere the variables
+# We have mentioned in inventory file
+# When we run this playbook, it goes and checks in the inventory file
+# From there it fetches those values
