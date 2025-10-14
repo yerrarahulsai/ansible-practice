@@ -1,0 +1,11 @@
+- name: variable from inventory file
+  hosts: local
+  connection: local
+  tasks:
+  - name: print course info
+    ansible.builtin.debug:
+      msg: "Course name is: {{ course }}, Duration: {{ duration }}, Trainer: {{ trainer }}"
+
+
+# Passing in the cli - command
+# ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 -e "course=devops" -e "duration:20hrs" -e "trainer=rs" 08-variables-arguments.yaml
