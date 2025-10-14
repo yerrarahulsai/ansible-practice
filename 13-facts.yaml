@@ -1,0 +1,12 @@
+- name: check the facts
+  hosts: local
+  connection: local
+  become: yes  # To run tasks with root privilege as root user
+  tasks:
+  - name: Install nginx if redhat
+    ansible.builtin.dnf:
+      name: nginx
+      state: latest
+    when: ansible_os_family == "RedHat"
+# We use ansible_   while refering the facts
+# Here we are using os_family which is available in the gathered facts by ansible
