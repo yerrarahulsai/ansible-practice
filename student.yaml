@@ -1,0 +1,19 @@
+- name: "Rahul sai"
+  dob: "01-01-2004"
+  age: 21
+  addresses:
+  # Object
+  - doorNo: 4-32
+    street: "Sastri nagar"
+    pin: 434156
+    type: current
+  
+  - doorNo: 4-32
+    street: "Sastri nagar"
+    pin: 434156
+    type: permanent
+  
+  skills:
+  - java
+  - devops
+  - cloud
