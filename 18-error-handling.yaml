@@ -1,0 +1,17 @@
+- name: user creation
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: Check user exixt or not
+    ansible.builtin.command: id roboshop
+    register: user_output
+    ignore_errors: true  # Execution will not be stopped, it continues
+  
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "{{ user_output }}"
+
+  - name: create user
+    ansible.builtin.command: useradd roboshop
+    when: user_output.rc != 0
