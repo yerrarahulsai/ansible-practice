@@ -1,0 +1,62 @@
+- name: functions
+  hosts: local
+  connection: local
+  vars:
+    NAME: "Rahul Sai"
+    ipaddress: "127.0.5.1"
+    technologies: DevOps, Linux, Shell, Ansible  #string
+    details:             #map == dictionary(Key-value pairs)
+      firstname: Rahul
+      secondname: Sai
+  tasks:
+  - name: default varibale
+    ansible.builtin.debug:
+      msg: "Hello {{ name | default('Rahul') }}"
+      # If name is available, then it takes that value, if not the default value we specified will be taken
+      # Here default is a filter
+
+  # String to list
+  - name: convert string to list
+    ansible.builtin.debug:
+      msg: "Technologies are {{ technologies | split(',') }}"
+
+  - name: convert map to list
+    ansible.builtin.debug:
+      msg: Details are {{ details | dict2items }}
+  
+  - name: read yaml and take it into a varibale
+    ansible.builtin.set_fact:
+      student_yaml: "{{ lookup('file', 'student.yaml') | from_yaml }}"
+    
+  - name: convert yaml into json
+    ansible.builtin.debug:
+      msg: "json: {{ student_yaml | to_nice_json }}"
+
+  - name: save json to a file
+    ansible.builtin.copy:
+      dest: ./student.json
+      content: "{{ student_yaml | to_nice_json }}"
+
+  - name: convert to uppercase
+    ansible.builtin.debug:
+      msg: "{{ NAME | upper }}"
+  
+  - name: To check IP is valid or not
+    ansible.builtin.debug:
+      msg: "{{ ipaddress | ansible.utils.ipv4 }}"
+  
+  - name: To find root word in a file
+    ansible.builtin.shell: cat /etc/passwd | grep root
+    register: output    # Shell command output will be stored in the output variable
+  
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "Command Output: {{ output }}"
+
+  - name: redirect the output
+    ansible.builtin.shell: ls -l > /tmp/output.txt
+    register: redirect_output
+
+  - name: print the redirect output
+    ansible.builtin.debug:
+      msg: "{{ redirect_output }}"
